@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <style>
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Product Catalog</h1>
+  <div id="productCatalog">
+    <!-- Product cards will be dynamically generated here -->
+  </div>
+
+  <script>
+    // Sample list of products
+    const products = [
+      { name: "Product 1", price: 10 },
+      { name: "Product 2", price: 20 },
+      { name: "Product 3", price: 30 },
+      { name: "Product 4", price: 40 },
+      { name: "Product 5", price: 50 }
+    ];
+
+    // Function to generate HTML for product cards
+    function generateProductCard(product) {
+      return `
+        <div class="product-card">
+          <h3>${product.name}</h3>
+          <p>$${product.price}</p>
+          <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+        </div>
+      `;
+    }
+
+    // Function to render product cards
+    function renderProductCatalog(products) {
+      const productCatalogElement = document.getElementById("productCatalog");
+      productCatalogElement.innerHTML = "";
+
+      products.map(product => {
+        productCatalogElement.innerHTML += generateProductCard(product);
+      });
+    }
+
+    // Call renderProductCatalog to display products
+    renderProductCatalog(products);
+
+    // Function to add item to cart
+    function addToCart(productName, price) {
+      // Implementation of addToCart will go here
+      console.log(`Added ${productName} to cart. Price: $${price}`);
+    }
+  </script>
+</body>
+</html>
